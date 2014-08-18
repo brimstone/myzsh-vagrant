@@ -1,0 +1,50 @@
+#compdef vagrant
+
+_vagrant () {
+	getvms() {
+		local -a vms
+		if [ "$1" = "running" ]; then
+			vms=(
+				$(vagrant status | awk '$NF~/\)$/ { print $1 }')
+			)
+		else
+			vms=(
+				$(vagrant status | awk '$2=="running" { print $1 }')
+			)
+		fi
+		_describe -t commands "vagrant $1" vms -V1
+	}
+	local -a verbs
+	IFS=$'\n'
+	# words[2] is whatever is already typed into the command line after "myzsh "
+	case "$words[2]" in
+	ssh) # SSH into hosts
+		getvms running ssh
+	;;
+	provision) # Provision host
+		getvms running provision
+	;;
+	reload) # Reload host
+		getvms running reload
+	;;
+	destroy) # Delete host
+		getvms running destroy
+	;;
+	up) # Setup host
+		getvms "" up
+	;;
+	# FIXME this could be done better, fixing [LPRIMARY,LSECONDARY,...] files ...
+	*)
+		verbs=(
+			"ssh:SSH into hosts"
+			"provision:Provision host"
+			"destroy:Delete host"
+			"up:Setup host"
+			"reload:Reload host"
+		)
+		_describe -t commands 'myzsh commands' verbs -V1;;
+	esac
+	return 1
+}
+
+_vagrant "$@"
