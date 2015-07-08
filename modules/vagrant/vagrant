@@ -1,2 +1,4 @@
 
 compdef _vagrant vagrant
+
+# vim: filetype=zsh noexpandtab
