@@ -13,3 +13,4 @@ This is a module and completion script for [myzsh](https://github.com/brimstone/
 ## Usage
 
 * `vagrant <tab>`
+* `vagrant init <tab>` will show you currently added boxes.
