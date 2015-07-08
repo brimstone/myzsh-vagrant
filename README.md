@@ -1,6 +1,6 @@
 # myzsh-vagrant
 
-This is a module and completion script for [myzsh](https://github.com/brimstone/myzsh).
+This is a module and completion script for [myzsh](https://github.com/myzsh/myzsh).
 
 ## Requirements
 
