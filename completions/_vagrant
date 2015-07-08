@@ -16,11 +16,9 @@ _vagrant () {
 	}
 	getboxes() {
         	local -a boxes
-	        if [ "$2" = "init" ]; then
-        	    boxes=(
-                	$(print -l $(basename ~/.vagrant.d/boxes/*(/)))
+        	boxes=(
+               		$(print -l $(basename ~/.vagrant.d/boxes/*(/)))
             	)
-        	fi
 	        _describe -t commands "vagrant init $2" boxes -V1
 	}
 	local -a verbs
