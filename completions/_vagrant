@@ -17,7 +17,7 @@ _vagrant () {
 	getboxes() {
         	local -a boxes
         	boxes=(
-			$(print -l $(basename ~/.vagrant.d/boxes/*(/)))
+			$(vagrant box list | cut -d " " -f 1)
             	)
 	        _describe -t commands "vagrant init $2" boxes -V1
 	}
