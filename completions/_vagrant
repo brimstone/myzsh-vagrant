@@ -14,6 +14,15 @@ _vagrant () {
 		fi
 		_describe -t commands "vagrant $1" vms -V1
 	}
+	getboxes() {
+        	local -a boxes
+	        if [ "$2" = "init" ]; then
+        	    boxes=(
+                	$(print -l $(basename ~/.vagrant.d/boxes/*(/)))
+            	)
+        	fi
+	        _describe -t commands "vagrant init $2" boxes -V1
+	}
 	local -a verbs
 	IFS=$'\n'
 	# words[2] is whatever is already typed into the command line after "myzsh "
@@ -34,7 +43,7 @@ _vagrant () {
 		getvms "" up
 	;;
 	init) # Initialize new Vagrant host
-		getvms "" init
+		getboxes "" init
 	;;
 	# FIXME this could be done better, fixing [LPRIMARY,LSECONDARY,...] files ...
 	*)
