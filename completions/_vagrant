@@ -33,9 +33,9 @@ _vagrant () {
 	up) # Boot host
 		getvms "" up
 	;;
-    init) # Initialize new Vagrant host
-        getvms running init
-    ;;
+	init) # Initialize new Vagrant host
+		getvms running init
+	;;
 	# FIXME this could be done better, fixing [LPRIMARY,LSECONDARY,...] files ...
 	*)
 		verbs=(
