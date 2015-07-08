@@ -8,7 +8,7 @@ This is a module and completion script for [myzsh](https://github.com/brimstone/
 
 ## Installation
 
-* `myzsh remote add https://github.com/brimstone/myzsh-vagrant`
+* `myzsh remote add https://github.com/myzsh/myzsh-vagrant`
 
 ## Usage
 
