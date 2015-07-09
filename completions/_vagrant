@@ -14,6 +14,13 @@ _vagrant () {
 		fi
 		_describe -t commands "vagrant $1" vms -V1
 	}
+	getboxes() {
+        	local -a boxes
+        	boxes=(
+			$(vagrant box list | cut -d " " -f 1)
+            	)
+	        _describe -t commands "vagrant init" boxes -V1
+	}
 	local -a verbs
 	IFS=$'\n'
 	# words[2] is whatever is already typed into the command line after "myzsh "
@@ -34,7 +41,7 @@ _vagrant () {
 		getvms "" up
 	;;
 	init) # Initialize new Vagrant host
-		getvms "" init
+		getboxes
 	;;
 	# FIXME this could be done better, fixing [LPRIMARY,LSECONDARY,...] files ...
 	*)
@@ -52,3 +59,5 @@ _vagrant () {
 }
 
 _vagrant "$@"
+
+# vim: filetype=zsh noexpandtab
