@@ -19,7 +19,7 @@ _vagrant () {
         	boxes=(
 			$(vagrant box list | cut -d " " -f 1)
             	)
-	        _describe -t commands "vagrant init $2" boxes -V1
+	        _describe -t commands "vagrant init" boxes -V1
 	}
 	local -a verbs
 	IFS=$'\n'
@@ -41,7 +41,7 @@ _vagrant () {
 		getvms "" up
 	;;
 	init) # Initialize new Vagrant host
-		getboxes "" init
+		getboxes
 	;;
 	# FIXME this could be done better, fixing [LPRIMARY,LSECONDARY,...] files ...
 	*)
